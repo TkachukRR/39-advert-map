@@ -1,0 +1,25 @@
+#Fronend - react
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+frontend/react-js/node_modules
+frontend/react-js/.pnp
+frontend/react-js/.pnp.js
+
+# testing
+frontend/react-js/coverage
+
+# production
+frontend/react-js/build
+
+# misc
+frontend/react-js/.DS_Store
+frontend/react-js/.env.local
+frontend/react-js/.env.development.local
+frontend/react-js/.env.test.local
+frontend/react-js/.env.production.local
+
+frontend/react-js/npm-debug.log*
+frontend/react-js/yarn-debug.log*
+frontend/react-js/yarn-error.log*
