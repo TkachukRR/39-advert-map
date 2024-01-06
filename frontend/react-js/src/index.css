@@ -1,1 +1,28 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
+html,
+body {
+  border: 0;
+  overflow: hidden;
+}
+
+button,
+input {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+#root {
+  height: 100vh;
+}
