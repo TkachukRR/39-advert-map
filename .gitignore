@@ -23,3 +23,5 @@ frontend/react-js/.env.production.local
 frontend/react-js/npm-debug.log*
 frontend/react-js/yarn-debug.log*
 frontend/react-js/yarn-error.log*
+
+frontend/react-js/.prettierrc
