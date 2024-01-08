@@ -8,6 +8,11 @@ import L from 'leaflet';
 export default function Map({ markers }) {
   const mapRef = useRef();
 
+  const customIcon = new L.Icon({
+    iconUrl: './images/pin.svg',
+    iconSize: [32, 32],
+  });
+
   useEffect(() => {
     if (markers?.length) {
       const newBounds = L.latLngBounds(markers);
@@ -27,7 +32,7 @@ export default function Map({ markers }) {
       />
 
       {markers.map((marker, index) => (
-        <Marker position={marker} key={index}></Marker>
+        <Marker position={marker} key={index} icon={customIcon}></Marker>
       ))}
     </MapContainer>
   );
