@@ -24,5 +24,5 @@ export default function App() {
     fetchMarkers();
   }, []);
 
-  return <Map />;
+  return <Map markers={markers} />;
 }
