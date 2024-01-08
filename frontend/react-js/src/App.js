@@ -15,7 +15,9 @@ export default function App() {
           throw new Error('Loading markers error');
         }
 
-        setMarkers(markersData);
+        setTimeout(() => {
+          setMarkers(markersData);
+        }, 2000); //TODO delete timeout for real API
       } catch (error) {
         console.error('Loading markers error: ', error);
       }
