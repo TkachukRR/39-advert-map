@@ -1,0 +1,12 @@
+.advert {
+  overflow: hidden;
+}
+.advert__title {
+}
+.advert__description {
+  height: 0;
+}
+
+.advert__description_visible {
+  height: auto;
+}

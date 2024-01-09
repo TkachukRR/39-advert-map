@@ -13,4 +13,7 @@
 }
 
 .list__item {
+  border-radius: 6px;
+  border: 1px solid lightskyblue;
+  padding: 4px 8px;
 }

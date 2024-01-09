@@ -2,105 +2,105 @@
   {
     "id": 1,
     "coordinates": [50.4501, 30.5234],
-    "description": "",
+    "description": "test text",
     "title": "title 1",
     "price": 1001
   },
   {
     "id": 2,
     "coordinates": [49.8397, 24.0297],
-    "description": "",
+    "description": "test text",
     "title": "title 2",
     "price": 1002
   },
   {
     "id": 3,
     "coordinates": [48.9226, 24.7111],
-    "description": "",
+    "description": "test text",
     "title": "title 3",
     "price": 1003
   },
   {
     "id": 4,
     "coordinates": [46.4846, 30.7326],
-    "description": "",
+    "description": "test text",
     "title": "title 4",
     "price": 1004
   },
   {
     "id": 5,
     "coordinates": [48.4647, 35.0462],
-    "description": "",
+    "description": "test text",
     "title": "title 5",
     "price": 1005
   },
   {
     "id": 6,
     "coordinates": [49.5535, 25.5948],
-    "description": "",
+    "description": "test text",
     "title": "title 6",
     "price": 1006
   },
   {
     "id": 7,
     "coordinates": [50.7472, 25.3254],
-    "description": "",
+    "description": "test text",
     "title": "title 7",
     "price": 1007
   },
   {
     "id": 8,
     "coordinates": [50.8485, 24.3174],
-    "description": "",
+    "description": "test text",
     "title": "title 8",
     "price": 1008
   },
   {
     "id": 9,
     "coordinates": [48.6315, 22.2879],
-    "description": "",
+    "description": "test text",
     "title": "title 9",
     "price": 1009
   },
   {
     "id": 10,
     "coordinates": [50.9271, 34.7809],
-    "description": "",
+    "description": "test text",
     "title": "title 10",
     "price": 1010
   },
   {
     "id": 11,
     "coordinates": [46.9751, 32.0001],
-    "description": "",
+    "description": "test text",
     "title": "title 11",
     "price": 1011
   },
   {
     "id": 12,
     "coordinates": [49.5926, 36.1651],
-    "description": "",
+    "description": "test text",
     "title": "title 12",
     "price": 1012
   },
   {
     "id": 13,
     "coordinates": [48.7194, 37.5665],
-    "description": "",
+    "description": "test text",
     "title": "title 13",
     "price": 1013
   },
   {
     "id": 14,
     "coordinates": [50.9316, 28.6139],
-    "description": "",
+    "description": "test text",
     "title": "title 14",
     "price": 1014
   },
   {
     "id": 15,
     "coordinates": [49.4253, 27.0011],
-    "description": "",
+    "description": "test text",
     "title": "title 15",
     "price": 1015
   }

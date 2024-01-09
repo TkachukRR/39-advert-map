@@ -6,6 +6,7 @@ import List from './components/List/List';
 export default function App() {
   const [adverts, setAdverts] = useState([]);
   const [visibleAdverts, setVisibleAdverts] = useState([]);
+  const [activeAdvert, setActiveAdvert] = useState(null);
 
   const updateVisibleAdverts = (markers) => {
     const visibleAdverts = adverts.filter((advert) =>
@@ -17,6 +18,16 @@ export default function App() {
     );
 
     setVisibleAdverts(visibleAdverts);
+  };
+
+  const updateActiveAdvertId = (marker) => {
+    const newActiveAdvert = visibleAdverts.filter(
+      (advert) =>
+        advert.coordinates[0] === marker[0] &&
+        advert.coordinates[1] === marker[1],
+    );
+
+    setActiveAdvert(...newActiveAdvert);
   };
 
   useEffect(() => {
@@ -43,8 +54,16 @@ export default function App() {
 
   return (
     <>
-      <Map adverts={adverts} updateVisibleAdverts={updateVisibleAdverts} />
-      <List list={visibleAdverts} title="Adverts:" />
+      <Map
+        adverts={adverts}
+        updateVisibleAdverts={updateVisibleAdverts}
+        updateActiveAdvertId={updateActiveAdvertId}
+      />
+      <List
+        list={visibleAdverts}
+        title="Adverts:"
+        activeAdvert={activeAdvert}
+      />
     </>
   );
 }

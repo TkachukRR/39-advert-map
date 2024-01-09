@@ -5,7 +5,11 @@ import { mapSettings } from '../../settings';
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 
-export default function Map({ adverts, updateVisibleAdverts }) {
+export default function Map({
+  adverts,
+  updateVisibleAdverts,
+  updateActiveAdvertId,
+}) {
   const mapRef = useRef();
 
   const customIcon = new L.Icon({
@@ -20,8 +24,15 @@ export default function Map({ adverts, updateVisibleAdverts }) {
       mapRef?.current?.flyToBounds(newBounds);
 
       newMarkers.forEach((markerCoordinates, index) => {
-        L.marker(markerCoordinates, { icon: customIcon }).addTo(
-          mapRef?.current,
+        const newMarker = L.marker(markerCoordinates, {
+          icon: customIcon,
+        }).addTo(mapRef?.current);
+
+        newMarker.addEventListener('click', () =>
+          updateActiveAdvertId([
+            newMarker.getLatLng().lat,
+            newMarker.getLatLng().lng,
+          ]),
         );
       });
 
@@ -51,11 +62,6 @@ export default function Map({ adverts, updateVisibleAdverts }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-
-      {/*{markers.length && console.log('lll')}*/}
-      {/*{markers.map((marker, index) => (*/}
-      {/*  <Marker position={marker} key={index} icon={customIcon}></Marker>*/}
-      {/*))}*/}
     </MapContainer>
   );
 }
