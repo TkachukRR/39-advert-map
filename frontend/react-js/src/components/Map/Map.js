@@ -1,11 +1,11 @@
 import './Map.css';
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import { mapSettings } from '../../settings';
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 
-export default function Map({ markers, updateVisibleMarkers }) {
+export default function Map({ adverts, updateVisibleAdverts }) {
   const mapRef = useRef();
 
   const customIcon = new L.Icon({
@@ -14,16 +14,23 @@ export default function Map({ markers, updateVisibleMarkers }) {
   });
 
   useEffect(() => {
-    if (markers?.length) {
-      const newBounds = L.latLngBounds(markers);
+    if (adverts?.length) {
+      const newMarkers = adverts.map((advert) => advert.coordinates);
+      const newBounds = L.latLngBounds(newMarkers);
       mapRef?.current?.flyToBounds(newBounds);
 
+      newMarkers.forEach((markerCoordinates, index) => {
+        L.marker(markerCoordinates, { icon: customIcon }).addTo(
+          mapRef?.current,
+        );
+      });
+
       const handleMoveEnd = () => {
-        const visibleMarkers = markers.filter((marker) =>
+        const visibleMarkers = newMarkers.filter((marker) =>
           mapRef?.current?.getBounds().contains(marker),
         );
 
-        updateVisibleMarkers(visibleMarkers);
+        updateVisibleAdverts(visibleMarkers);
       };
 
       mapRef?.current?.addEventListener('moveend', handleMoveEnd);
@@ -32,7 +39,7 @@ export default function Map({ markers, updateVisibleMarkers }) {
         mapRef?.current?.removeEventListener('moveend', handleMoveEnd);
       };
     }
-  }, [markers]);
+  }, [adverts]);
 
   return (
     <MapContainer
@@ -45,9 +52,10 @@ export default function Map({ markers, updateVisibleMarkers }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {markers.map((marker, index) => (
-        <Marker position={marker} key={index} icon={customIcon}></Marker>
-      ))}
+      {/*{markers.length && console.log('lll')}*/}
+      {/*{markers.map((marker, index) => (*/}
+      {/*  <Marker position={marker} key={index} icon={customIcon}></Marker>*/}
+      {/*))}*/}
     </MapContainer>
   );
 }

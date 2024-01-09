@@ -1,38 +1,50 @@
 import './App.css';
-import Map from './components/Map/Map';
 import { useEffect, useState } from 'react';
+import Map from './components/Map/Map';
 import List from './components/List/List';
 
 export default function App() {
-  const [markers, setMarkers] = useState([]);
-  const [visibleMarkers, setVisibleMarkers] = useState([]);
+  const [adverts, setAdverts] = useState([]);
+  const [visibleAdverts, setVisibleAdverts] = useState([]);
+
+  const updateVisibleAdverts = (markers) => {
+    const visibleAdverts = adverts.filter((advert) =>
+      markers.some(
+        (visibleMarker) =>
+          advert.coordinates[0] === visibleMarker[0] &&
+          advert.coordinates[1] === visibleMarker[1],
+      ),
+    );
+
+    setVisibleAdverts(visibleAdverts);
+  };
 
   useEffect(() => {
-    const fetchMarkers = async () => {
+    const fetchAdverts = async () => {
       try {
-        const response = await fetch('/mockedMarkers.json');
-        const markersData = await response.json();
+        const response = await fetch('/mockedAdverts.json');
+        const advertsData = await response.json();
 
         if (!response.ok) {
           throw new Error('Loading markers error');
         }
 
         setTimeout(() => {
-          setMarkers(markersData);
-          setVisibleMarkers(markersData);
+          setAdverts(advertsData);
+          setVisibleAdverts(advertsData);
         }, 2000); //TODO delete timeout for real API
       } catch (error) {
         console.error('Loading markers error: ', error);
       }
     };
 
-    fetchMarkers();
+    fetchAdverts();
   }, []);
 
   return (
     <>
-      <Map markers={markers} updateVisibleMarkers={setVisibleMarkers} />
-      <List list={visibleMarkers} title="Markers:" />
+      <Map adverts={adverts} updateVisibleAdverts={updateVisibleAdverts} />
+      <List list={visibleAdverts} title="Adverts:" />
     </>
   );
 }

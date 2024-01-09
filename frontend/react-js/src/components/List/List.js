@@ -7,7 +7,7 @@ export default function List({ list, title }) {
       <ul className={classes.list}>
         {list.map((item, index) => (
           <li key={index} className={classes.list__item}>
-            {item}
+            {JSON.stringify(item)}
           </li>
         ))}
       </ul>
