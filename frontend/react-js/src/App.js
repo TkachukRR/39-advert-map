@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 export default function App() {
   const [markers, setMarkers] = useState([]);
+  const [visibleMarkers, setVisibleMarkers] = useState([]);
 
   useEffect(() => {
     const fetchMarkers = async () => {
@@ -17,6 +18,7 @@ export default function App() {
 
         setTimeout(() => {
           setMarkers(markersData);
+          setVisibleMarkers(markersData);
         }, 2000); //TODO delete timeout for real API
       } catch (error) {
         console.error('Loading markers error: ', error);
