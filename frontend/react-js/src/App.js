@@ -28,5 +28,5 @@ export default function App() {
     fetchMarkers();
   }, []);
 
-  return <Map markers={markers} />;
+  return <Map markers={markers} updateVisibleMarkers={setVisibleMarkers} />;
 }

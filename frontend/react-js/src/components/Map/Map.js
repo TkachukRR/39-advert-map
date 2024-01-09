@@ -5,7 +5,7 @@ import { mapSettings } from '../../settings';
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 
-export default function Map({ markers }) {
+export default function Map({ markers, updateVisibleMarkers }) {
   const mapRef = useRef();
 
   const customIcon = new L.Icon({
@@ -17,6 +17,20 @@ export default function Map({ markers }) {
     if (markers?.length) {
       const newBounds = L.latLngBounds(markers);
       mapRef?.current?.flyToBounds(newBounds);
+
+      const handleMoveEnd = () => {
+        const visibleMarkers = markers.filter((marker) =>
+          mapRef?.current?.getBounds().contains(marker),
+        );
+
+        updateVisibleMarkers(visibleMarkers);
+      };
+
+      mapRef?.current?.addEventListener('moveend', handleMoveEnd);
+
+      return () => {
+        mapRef?.current?.removeEventListener('moveend', handleMoveEnd);
+      };
     }
   }, [markers]);
 
