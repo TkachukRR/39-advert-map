@@ -1,6 +1,7 @@
 import './App.css';
 import Map from './components/Map/Map';
 import { useEffect, useState } from 'react';
+import List from './components/List/List';
 
 export default function App() {
   const [markers, setMarkers] = useState([]);
@@ -28,5 +29,10 @@ export default function App() {
     fetchMarkers();
   }, []);
 
-  return <Map markers={markers} updateVisibleMarkers={setVisibleMarkers} />;
+  return (
+    <>
+      <Map markers={markers} updateVisibleMarkers={setVisibleMarkers} />
+      <List list={visibleMarkers} title="Markers:" />
+    </>
+  );
 }
