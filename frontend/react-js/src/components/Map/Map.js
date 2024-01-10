@@ -1,8 +1,8 @@
 import './Map.css';
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 import { mapSettings } from '../../settings';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 
 export default function Map({
@@ -11,30 +11,25 @@ export default function Map({
   updateActiveAdvertId,
 }) {
   const mapRef = useRef();
+  const [markersPositions, setMarkersPositions] = useState(null);
+  const [activeMarkerCoordinates, setActiveMarkerCoordinates] = useState([]);
 
-  const customIcon = new L.Icon({
+  const icon = new L.Icon({
     iconUrl: './images/pin.svg',
+    iconSize: [32, 32],
+  });
+
+  const iconActive = new L.Icon({
+    iconUrl: './images/pin-active.svg',
     iconSize: [32, 32],
   });
 
   useEffect(() => {
     if (adverts?.length) {
       const newMarkers = adverts.map((advert) => advert.coordinates);
+      setMarkersPositions(newMarkers);
       const newBounds = L.latLngBounds(newMarkers);
       mapRef?.current?.flyToBounds(newBounds);
-
-      newMarkers.forEach((markerCoordinates, index) => {
-        const newMarker = L.marker(markerCoordinates, {
-          icon: customIcon,
-        }).addTo(mapRef?.current);
-
-        newMarker.addEventListener('click', () =>
-          updateActiveAdvertId([
-            newMarker.getLatLng().lat,
-            newMarker.getLatLng().lng,
-          ]),
-        );
-      });
 
       const handleMoveEnd = () => {
         const visibleMarkers = newMarkers.filter((marker) =>
@@ -52,6 +47,11 @@ export default function Map({
     }
   }, [adverts]);
 
+  const handleMarkerClick = (position) => {
+    setActiveMarkerCoordinates(position);
+    updateActiveAdvertId(position);
+  };
+
   return (
     <MapContainer
       center={mapSettings.center}
@@ -62,6 +62,21 @@ export default function Map({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+
+      {markersPositions?.length &&
+        markersPositions.map((position, index) => (
+          <Marker
+            position={position}
+            icon={
+              position[0] === activeMarkerCoordinates[0] &&
+              position[1] === activeMarkerCoordinates[1]
+                ? iconActive
+                : icon
+            }
+            key={index}
+            eventHandlers={{ click: () => handleMarkerClick(position) }}
+          />
+        ))}
     </MapContainer>
   );
 }
