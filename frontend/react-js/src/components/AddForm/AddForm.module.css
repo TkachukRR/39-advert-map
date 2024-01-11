@@ -18,7 +18,7 @@
   font: inherit;
   /*font-size: var(--font-size-xs);*/
   /*background-color: var(--color-background-tertiary);*/
-  background-color: lightskyblue;
+  background-color: #d1f0ff;
   /*color: var(--color-text-secondary);*/
   border: none;
   border-radius: 5px;
@@ -43,7 +43,7 @@
   /*font-size: var(--font-size-s);*/
   /*color: var(--color-text-quaternary);*/
   /*background-color: var(--color-background-secondary);*/
-  background-color: deepskyblue;
+  background-color: #d1f0ff;
   border-radius: 5px;
   outline: none;
   border: none;

@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.left {
+  flex: 80%;
+  height: 100vh;
+}
+
+.right {
+  flex: 20%;
+  max-width: 250px;
+  height: 100%;
+  padding: 10px;
+}

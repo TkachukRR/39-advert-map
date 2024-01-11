@@ -1,6 +1,4 @@
 .list__wrapper {
-  padding: 10px;
-  width: 300px;
 }
 
 .list__title {
@@ -19,11 +17,6 @@
   padding: 4px 8px;
 }
 
-.list__btn {
-  padding: 10px 20px;
-  border: 1px solid lightskyblue;
-  padding: 4px 8px;
-  border-radius: 6px;
-  width: 100%;
-  margin-bottom: 10px;
+.list__item_active {
+  background-color: #d1f0ff;
 }

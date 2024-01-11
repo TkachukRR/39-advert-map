@@ -1,56 +1,59 @@
 import './Map.css';
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import { mapSettings } from '../../settings';
-import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
+import { useEffect, useRef, useState } from 'react';
+import MapMarker from '../MapMarker/MapMarker';
 
 export default function Map({
-  adverts,
-  updateVisibleAdverts,
-  updateActiveAdvertId,
+  advertisements,
+  visibleAdvertisements,
+  setVisibleAdvertisements,
+  setSelectedAdvertisement,
 }) {
-  const mapRef = useRef();
+  const mapRef = useRef(null);
   const [markersPositions, setMarkersPositions] = useState(null);
-  const [activeMarkerCoordinates, setActiveMarkerCoordinates] = useState([]);
-
-  const icon = new L.Icon({
-    iconUrl: './images/pin.svg',
-    iconSize: [32, 32],
-  });
-
-  const iconActive = new L.Icon({
-    iconUrl: './images/pin-active.svg',
-    iconSize: [32, 32],
-  });
+  const [visibleMarkersPositions, setVisibleMarkersPositions] = useState(null);
+  const [selectedMarkerPosition, setSelectedMarkerPosition] = useState(null);
 
   useEffect(() => {
-    if (adverts?.length) {
-      const newMarkers = adverts.map((advert) => advert.coordinates);
-      setMarkersPositions(newMarkers);
+    if (advertisements?.length) {
+      const map = mapRef.current;
+      const newMarkers = advertisements.map(
+        (advertisement) => advertisement.coordinates,
+      );
       const newBounds = L.latLngBounds(newMarkers);
-      mapRef?.current?.flyToBounds(newBounds);
 
-      const handleMoveEnd = () => {
-        const visibleMarkers = newMarkers.filter((marker) =>
-          mapRef?.current?.getBounds().contains(marker),
-        );
-
-        updateVisibleAdverts(visibleMarkers);
-      };
-
-      mapRef?.current?.addEventListener('moveend', handleMoveEnd);
-
-      return () => {
-        mapRef?.current?.removeEventListener('moveend', handleMoveEnd);
-      };
+      setMarkersPositions(newMarkers);
+      map.flyToBounds(newBounds);
     }
-  }, [adverts]);
+  }, [advertisements, mapRef]);
 
-  const handleMarkerClick = (position) => {
-    setActiveMarkerCoordinates(position);
-    updateActiveAdvertId(position);
-  };
+  useEffect(() => {
+    if (selectedMarkerPosition) {
+      const newSelectedAdvertisement = visibleAdvertisements.filter(
+        (advert) =>
+          advert.coordinates[0] === selectedMarkerPosition[0] &&
+          advert.coordinates[1] === selectedMarkerPosition[1],
+      );
+      setSelectedAdvertisement(...newSelectedAdvertisement);
+    }
+  }, [selectedMarkerPosition]);
+
+  useEffect(() => {
+    if (visibleMarkersPositions) {
+      const newVisibleAdvertisements = advertisements.filter((advert) =>
+        visibleMarkersPositions.some(
+          (marker) =>
+            advert.coordinates[0] === marker[0] &&
+            advert.coordinates[1] === marker[1],
+        ),
+      );
+
+      setVisibleAdvertisements(newVisibleAdvertisements);
+    }
+  }, [visibleMarkersPositions]);
 
   return (
     <MapContainer
@@ -62,21 +65,15 @@ export default function Map({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-
-      {markersPositions?.length &&
-        markersPositions.map((position, index) => (
-          <Marker
-            position={position}
-            icon={
-              position[0] === activeMarkerCoordinates[0] &&
-              position[1] === activeMarkerCoordinates[1]
-                ? iconActive
-                : icon
-            }
-            key={index}
-            eventHandlers={{ click: () => handleMarkerClick(position) }}
-          />
-        ))}
+      {markersPositions?.length && (
+        <MapMarker
+          markersPositions={markersPositions}
+          visibleMarkersPositions={visibleMarkersPositions}
+          selectedMarkerPosition={selectedMarkerPosition}
+          setSelectedMarkerPosition={setSelectedMarkerPosition}
+          setVisibleMarkersPositions={setVisibleMarkersPositions}
+        />
+      )}
     </MapContainer>
   );
 }
