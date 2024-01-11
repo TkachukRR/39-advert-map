@@ -5,6 +5,7 @@ export default function List({
   title,
   visibleAdvertisements,
   selectedAdvertisement,
+  setSelectedAdvertisement,
 }) {
   return (
     <div className={classes.list__wrapper}>
@@ -22,6 +23,7 @@ export default function List({
                 <Advert
                   data={advertisement}
                   active={selectedAdvertisement?.id === advertisement.id}
+                  setSelectedAdvertisement={setSelectedAdvertisement}
                 />
               </li>
             ),

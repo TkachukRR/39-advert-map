@@ -49,6 +49,7 @@ export default function AdvertisementMap() {
           isAddAdvertisementForm={isAddAdvertisementForm}
           visibleAdvertisements={visibleAdvertisements}
           selectedAdvertisement={selectedAdvertisement}
+          setSelectedAdvertisement={setSelectedAdvertisement}
           setIsAddAdvertisementForm={setIsAddAdvertisementForm}
         />
       </div>

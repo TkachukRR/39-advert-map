@@ -2,15 +2,32 @@
   overflow: hidden;
 }
 
+.advert__info {
+  padding: 10px 10px 5px;
+}
+
 .advert__title {
   margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
+.advert__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.advert__button {
+  flex: 1;
+}
 .advert__price {
+  flex: 1;
+  text-align: end;
 }
-
 .advert__description {
   height: 0;
+  overflow: hidden;
 }
 
 .advert__description_visible {
