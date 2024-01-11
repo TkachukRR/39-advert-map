@@ -6,6 +6,7 @@ export default function SidePanel({
   isAddAdvertisementForm,
   visibleAdvertisements,
   selectedAdvertisement,
+  setSelectedAdvertisement,
   setIsAddAdvertisementForm,
 }) {
   const toggleAddFormVisibility = () =>
@@ -13,16 +14,21 @@ export default function SidePanel({
 
   return (
     <>
-      <button className={'btn'} onClick={toggleAddFormVisibility}>
-        {isAddAdvertisementForm ? 'Close form' : 'Add Advertisement'}
+      <button
+        className={'btn'}
+        style={{ marginBottom: '5px' }}
+        onClick={toggleAddFormVisibility}
+      >
+        {isAddAdvertisementForm ? 'Закрити форму' : 'Додати оголошення'}
       </button>
       {isAddAdvertisementForm && <AddForm />}
 
       {isAdvertisementsList && (
         <List
-          title={'Visible Advertisements:'}
+          title={'Видимі на карті:'}
           visibleAdvertisements={visibleAdvertisements}
           selectedAdvertisement={selectedAdvertisement}
+          setSelectedAdvertisement={setSelectedAdvertisement}
         />
       )}
     </>
