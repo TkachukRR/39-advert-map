@@ -1,5 +1,6 @@
 import AddForm from '../AddForm/AddForm';
 import List from '../List/List';
+import Button from '../Button/Button';
 
 export default function SidePanel({
   isAdvertisementsList,
@@ -15,13 +16,9 @@ export default function SidePanel({
   return (
     <>
       <div style={{ padding: '10px' }}>
-        <button
-          className={'btn'}
-          style={{ marginBottom: '5px' }}
-          onClick={toggleAddFormVisibility}
-        >
+        <Button onClick={toggleAddFormVisibility} subClass="toggle_form">
           {isAddAdvertisementForm ? 'Закрити форму' : 'Додати оголошення'}
-        </button>
+        </Button>
         {isAddAdvertisementForm && <AddForm />}
       </div>
       {isAdvertisementsList && (

@@ -1,4 +1,5 @@
 import classes from './Advert.module.css';
+import Button from '../Button/Button';
 
 export default function Advert({ data, active, setSelectedAdvertisement }) {
   const handleOnDetailsClick = (selected) => {
@@ -7,7 +8,7 @@ export default function Advert({ data, active, setSelectedAdvertisement }) {
 
   return (
     <div className={classes.advert} id={data.id}>
-      <div className={active && classes.advert__image__wrapper}>
+      <div className={active ? classes.advert__image__wrapper : ''}>
         {active && (
           <img
             className={classes.advert__image}
@@ -32,12 +33,12 @@ export default function Advert({ data, active, setSelectedAdvertisement }) {
         </h4>
         <div className={classes.advert__container}>
           {!active && (
-            <button
-              className={classes.advert__button + ' btn'}
+            <Button
               onClick={() => handleOnDetailsClick(data)}
+              subClass="advert"
             >
               Детальніше
-            </button>
+            </Button>
           )}
           <strong className={classes.advert__price}>{data.price}</strong>
         </div>

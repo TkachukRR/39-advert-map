@@ -1,0 +1,34 @@
+.btn {
+  border: 1px solid lightskyblue;
+  padding: 4px 8px;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border: 1px solid darkslateblue;
+    background-color: lightskyblue;
+    outline: none;
+  }
+
+  &__toggle_form {
+    margin-bottom: 5px;
+  }
+
+  &__advert {
+    flex: 1;
+  }
+
+  &__form_submit,
+  &__form_reset {
+    text-transform: uppercase;
+    background-color: #d1f0ff;
+    border: 1px solid #d1f0ff;
+  }
+
+  &__form_submit__disabled {
+    border-color: lightgray;
+  }
+}

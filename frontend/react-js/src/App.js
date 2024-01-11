@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import AdvertisementMap from './components/AdvertisementMap/AdvertisementMap';
 
 export default function App() {

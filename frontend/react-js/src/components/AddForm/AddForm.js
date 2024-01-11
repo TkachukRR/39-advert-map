@@ -1,6 +1,7 @@
 import classes from './AddForm.module.css';
 import { useState } from 'react';
 import { validateRequire } from '../../utils/validators';
+import Button from '../Button/Button';
 
 const FieldTypeEnum = { number: 'number', text: 'text' };
 
@@ -208,23 +209,15 @@ export default function AddForm() {
       </label>
 
       <div className={classes.form__buttons}>
-        <button
-          className={classes.form__button}
+        <Button
           type="submit"
-          style={{
-            background: isSubmitDisabled ? 'lightgray' : null,
-          }}
+          onClick={null}
           disabled={isSubmitDisabled}
+          subClass={isSubmitDisabled ? 'form_submit' : 'form_submit__disabled'}
         >
-          Save
-        </button>
-        <button
-          className={classes.form__button}
-          type="button"
-          onClick={handleReset}
-        >
-          Reset
-        </button>
+          Зберегти
+        </Button>
+        <Button subClass="form_reset">Очистити</Button>
       </div>
     </form>
   );
