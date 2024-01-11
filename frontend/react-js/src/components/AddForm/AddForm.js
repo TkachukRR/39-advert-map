@@ -95,6 +95,7 @@ export default function AddForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
   };
 
   return (
