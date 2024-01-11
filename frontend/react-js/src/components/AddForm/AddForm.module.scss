@@ -1,0 +1,37 @@
+.form {
+  padding: 10px 0;
+
+  &__wrapper,
+  &__buttons {
+    display: flex;
+    flex-basis: 50%;
+    gap: 10px;
+  }
+
+  &__input,
+  &__textarea,
+  &__input_error,
+  &__textarea_error {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px 16px;
+    font: inherit;
+    background-color: #d1f0ff;
+    border: none;
+    border-radius: 5px;
+    outline: 1px solid transparent;
+
+    &_error {
+      outline-color: indianred;
+    }
+  }
+
+  &__input:focus,
+  &__textarea:focus {
+    outline: 1px solid darkslateblue;
+  }
+
+  &__textarea {
+    min-height: 75px;
+  }
+}
