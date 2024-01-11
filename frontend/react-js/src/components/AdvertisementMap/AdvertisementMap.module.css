@@ -11,6 +11,6 @@
 .right {
   flex: 20%;
   max-width: 250px;
-  height: 100%;
-  padding: 10px;
+  min-width: 180px;
+  height: 100vh;
 }

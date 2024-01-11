@@ -7,13 +7,20 @@ export default function Advert({ data, active, setSelectedAdvertisement }) {
 
   return (
     <div className={classes.advert} id={data.id}>
-      {active && (
-        <img
-          src={data.images?.length ? data.images[0] : './images/no-image.svg'}
-          alt={data.images?.length ? data.title : 'no image'}
-          style={{ width: '100%' }}
-        />
-      )}
+      <div className={active && classes.advert__image__wrapper}>
+        {active && (
+          <img
+            className={classes.advert__image}
+            src={data.images?.length ? data.images[0] : './images/no-image.svg'}
+            alt={data.images?.length ? data.title : 'no image'}
+            style={
+              !data.images?.length
+                ? { padding: '40px', objectFit: 'initial' }
+                : null
+            }
+          />
+        )}
+      </div>
       <div className={classes.advert__info}>
         <h4
           className={classes.advert__title}

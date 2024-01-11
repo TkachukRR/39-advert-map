@@ -14,15 +14,16 @@ export default function SidePanel({
 
   return (
     <>
-      <button
-        className={'btn'}
-        style={{ marginBottom: '5px' }}
-        onClick={toggleAddFormVisibility}
-      >
-        {isAddAdvertisementForm ? 'Закрити форму' : 'Додати оголошення'}
-      </button>
-      {isAddAdvertisementForm && <AddForm />}
-
+      <div style={{ padding: '10px' }}>
+        <button
+          className={'btn'}
+          style={{ marginBottom: '5px' }}
+          onClick={toggleAddFormVisibility}
+        >
+          {isAddAdvertisementForm ? 'Закрити форму' : 'Додати оголошення'}
+        </button>
+        {isAddAdvertisementForm && <AddForm />}
+      </div>
       {isAdvertisementsList && (
         <List
           title={'Видимі на карті:'}
