@@ -1,4 +1,4 @@
-import classes from './AddForm.module.css';
+import classes from './AddForm.module.scss';
 import { useState } from 'react';
 import { validateRequire } from '../../utils/validators';
 import Button from '../Button/Button';
@@ -103,17 +103,15 @@ export default function AddForm() {
     <form className={classes.form} onSubmit={handleSubmit}>
       <label htmlFor="id">
         <input
-          className={classes.form__input}
+          className={
+            formData.id.touched && formData.id.error
+              ? classes.form__input_error
+              : classes.form__input
+          }
           type={formData.id.type}
           placeholder="ID"
           id="id"
           value={formData.id.value}
-          style={{
-            outlineColor:
-              formData.id.touched && formData.id.error
-                ? 'indianred'
-                : 'transparent',
-          }}
           onChange={handleChange}
           onBlur={handleTouched}
         />
@@ -121,17 +119,15 @@ export default function AddForm() {
 
       <label htmlFor="title">
         <input
-          className={classes.form__input}
+          className={
+            formData.title.touched && formData.title.error
+              ? classes.form__input_error
+              : classes.form__input
+          }
           type={formData.title.type}
           placeholder="Title"
           id="title"
           value={formData.title.value}
-          style={{
-            outlineColor:
-              formData.title.touched && formData.title.error
-                ? 'indianred'
-                : 'transparent',
-          }}
           onChange={handleChange}
           onBlur={handleTouched}
         />
@@ -139,17 +135,15 @@ export default function AddForm() {
 
       <label htmlFor="coordinatesLat">
         <input
-          className={classes.form__input}
+          className={
+            formData.coordinatesLat.touched && formData.coordinatesLat.error
+              ? classes.form__input_error
+              : classes.form__input
+          }
           type={formData.coordinatesLat.type}
           placeholder="Coordinates lat"
           id="coordinatesLat"
           value={formData.coordinatesLat.value}
-          style={{
-            outlineColor:
-              formData.coordinatesLat.touched && formData.coordinatesLat.error
-                ? 'indianred'
-                : 'transparent',
-          }}
           onChange={handleChange}
           onBlur={handleTouched}
         />
@@ -157,17 +151,15 @@ export default function AddForm() {
 
       <label htmlFor="coordinatesLng">
         <input
-          className={classes.form__input}
+          className={
+            formData.coordinatesLng.touched && formData.coordinatesLng.error
+              ? classes.form__input_error
+              : classes.form__input
+          }
           type={formData.coordinatesLng.type}
           placeholder="Coordinates lng"
           id="coordinatesLng"
           value={formData.coordinatesLng.value}
-          style={{
-            outlineColor:
-              formData.coordinatesLng.touched && formData.coordinatesLng.error
-                ? 'indianred'
-                : 'transparent',
-          }}
           onChange={handleChange}
           onBlur={handleTouched}
         />
@@ -175,17 +167,15 @@ export default function AddForm() {
 
       <label htmlFor="price">
         <input
-          className={classes.form__input}
+          className={
+            formData.price.touched && formData.price.error
+              ? classes.form__input_error
+              : classes.form__input
+          }
           type={formData.price.type}
           placeholder="Price"
           id="price"
           value={formData.price.value}
-          style={{
-            outlineColor:
-              formData.price.touched && formData.price.error
-                ? 'indianred'
-                : 'transparent',
-          }}
           onChange={handleChange}
           onBlur={handleTouched}
         />
@@ -193,16 +183,14 @@ export default function AddForm() {
 
       <label htmlFor="description">
         <textarea
-          className={classes.form__textarea}
+          className={
+            formData.description.touched && formData.description.error
+              ? classes.form__input_error
+              : classes.form__input
+          }
           id="description"
           placeholder="Description"
           value={formData.description.value}
-          style={{
-            outlineColor:
-              formData.description.touched && formData.description.error
-                ? 'indianred'
-                : 'transparent',
-          }}
           onChange={handleChange}
           onBlur={handleTouched}
         />
@@ -217,7 +205,9 @@ export default function AddForm() {
         >
           Зберегти
         </Button>
-        <Button subClass="form_reset">Очистити</Button>
+        <Button subClass="form_reset" onClick={handleReset}>
+          Очистити
+        </Button>
       </div>
     </form>
   );
