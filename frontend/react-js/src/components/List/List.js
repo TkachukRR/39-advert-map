@@ -11,7 +11,7 @@ export default function List({
       <h3 className={classes.list__title}>{title}</h3>
       <ul className={classes.list}>
         {selectedAdvertisement && (
-          <li className={classes.list__item}>
+          <li className={classes.list__item + ' ' + classes.list__item_active}>
             <Advert data={selectedAdvertisement} active={true} />
           </li>
         )}

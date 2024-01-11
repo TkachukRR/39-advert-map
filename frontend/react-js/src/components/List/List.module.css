@@ -16,3 +16,7 @@
   border: 1px solid lightskyblue;
   padding: 4px 8px;
 }
+
+.list__item_active {
+  background-color: #d1f0ff;
+}

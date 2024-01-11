@@ -5,7 +5,7 @@ import SidePanel from '../SidePanel/SidePanel';
 
 export default function AdvertisementMap() {
   const [isAdvertisementsList, setIsAdvertisementsList] = useState(true);
-  const [isAddAdvertisementForm, setIsAddAdvertisementForm] = useState(true);
+  const [isAddAdvertisementForm, setIsAddAdvertisementForm] = useState(false);
 
   const [advertisements, setAdvertisements] = useState([]);
   const [visibleAdvertisements, setVisibleAdvertisements] = useState([]);
