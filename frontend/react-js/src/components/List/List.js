@@ -1,4 +1,4 @@
-import classes from './List.module.css';
+import classes from './List.module.scss';
 import Advertisement from '../Advertisement/Advertisement';
 
 export default function List({
@@ -8,7 +8,7 @@ export default function List({
   setSelectedAdvertisement,
 }) {
   return (
-    <div className={classes.list__wrapper}>
+    <div className={classes.wrapper}>
       <h3 className={classes.list__title}>{title}</h3>
       <ul className={classes.list}>
         {selectedAdvertisement && (
