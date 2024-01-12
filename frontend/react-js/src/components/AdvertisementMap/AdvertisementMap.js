@@ -1,4 +1,4 @@
-import classes from './AdvertisementMap.module.css';
+import classes from './AdvertisementMap.module.scss';
 import React, { useEffect, useState } from 'react';
 import Map from '../Map/Map';
 import SidePanel from '../SidePanel/SidePanel';
@@ -35,7 +35,7 @@ export default function AdvertisementMap() {
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.left}>
+      <main className={classes.main}>
         <Map
           advertisements={advertisements}
           visibleAdvertisements={visibleAdvertisements}
@@ -43,8 +43,8 @@ export default function AdvertisementMap() {
           setSelectedAdvertisement={setSelectedAdvertisement}
           selectedAdvertisement={selectedAdvertisement}
         />
-      </div>
-      <div className={classes.right}>
+      </main>
+      <aside className={classes.side}>
         <SidePanel
           isAdvertisementsList={isAdvertisementsList}
           isAddAdvertisementForm={isAddAdvertisementForm}
@@ -53,7 +53,7 @@ export default function AdvertisementMap() {
           setSelectedAdvertisement={setSelectedAdvertisement}
           setIsAddAdvertisementForm={setIsAddAdvertisementForm}
         />
-      </div>
+      </aside>
     </div>
   );
 }
