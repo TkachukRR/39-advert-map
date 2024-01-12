@@ -11,6 +11,7 @@ export default function Map({
   visibleAdvertisements,
   setVisibleAdvertisements,
   setSelectedAdvertisement,
+  selectedAdvertisement,
 }) {
   const mapRef = useRef(null);
   const [markersPositions, setMarkersPositions] = useState(null);
@@ -40,6 +41,12 @@ export default function Map({
       setSelectedAdvertisement(...newSelectedAdvertisement);
     }
   }, [selectedMarkerPosition]);
+
+  useEffect(() => {
+    if (selectedAdvertisement) {
+      setSelectedMarkerPosition(selectedAdvertisement.coordinates);
+    }
+  }, [selectedAdvertisement]);
 
   useEffect(() => {
     if (visibleMarkersPositions) {

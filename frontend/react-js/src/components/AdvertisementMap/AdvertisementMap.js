@@ -41,6 +41,7 @@ export default function AdvertisementMap() {
           visibleAdvertisements={visibleAdvertisements}
           setVisibleAdvertisements={setVisibleAdvertisements}
           setSelectedAdvertisement={setSelectedAdvertisement}
+          selectedAdvertisement={selectedAdvertisement}
         />
       </div>
       <div className={classes.right}>
