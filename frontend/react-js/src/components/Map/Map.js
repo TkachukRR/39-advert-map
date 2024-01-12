@@ -1,4 +1,4 @@
-import './Map.css';
+import './Map.scss';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { mapSettings } from '../../settings';
@@ -11,6 +11,7 @@ export default function Map({
   visibleAdvertisements,
   setVisibleAdvertisements,
   setSelectedAdvertisement,
+  selectedAdvertisement,
 }) {
   const mapRef = useRef(null);
   const [markersPositions, setMarkersPositions] = useState(null);
@@ -40,6 +41,12 @@ export default function Map({
       setSelectedAdvertisement(...newSelectedAdvertisement);
     }
   }, [selectedMarkerPosition]);
+
+  useEffect(() => {
+    if (selectedAdvertisement) {
+      setSelectedMarkerPosition(selectedAdvertisement.coordinates);
+    }
+  }, [selectedAdvertisement]);
 
   useEffect(() => {
     if (visibleMarkersPositions) {

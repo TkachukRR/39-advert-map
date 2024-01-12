@@ -3,12 +3,12 @@
   min-height: 100vh;
 }
 
-.left {
+.main {
   flex: 80%;
   height: 100vh;
 }
 
-.right {
+.side {
   flex: 20%;
   max-width: 250px;
   min-width: 180px;

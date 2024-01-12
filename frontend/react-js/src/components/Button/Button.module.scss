@@ -4,6 +4,9 @@
   border-radius: 6px;
   width: 100%;
   cursor: pointer;
+  transition:
+    border 0.2s,
+    background-color 0.2s;
 
   &:hover,
   &:active,
