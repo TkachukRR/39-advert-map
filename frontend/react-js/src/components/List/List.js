@@ -1,5 +1,5 @@
 import classes from './List.module.css';
-import Advert from '../Advert/Advert';
+import Advertisement from '../Advertisement/Advertisement';
 
 export default function List({
   title,
@@ -13,14 +13,14 @@ export default function List({
       <ul className={classes.list}>
         {selectedAdvertisement && (
           <li className={classes.list__item + ' ' + classes.list__item_active}>
-            <Advert data={selectedAdvertisement} active={true} />
+            <Advertisement data={selectedAdvertisement} active={true} />
           </li>
         )}
         {visibleAdvertisements.map(
           (advertisement) =>
             selectedAdvertisement?.id !== advertisement.id && (
               <li key={advertisement.id} className={classes.list__item}>
-                <Advert
+                <Advertisement
                   data={advertisement}
                   active={selectedAdvertisement?.id === advertisement.id}
                   setSelectedAdvertisement={setSelectedAdvertisement}

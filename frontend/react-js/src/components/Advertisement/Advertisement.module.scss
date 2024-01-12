@@ -1,0 +1,55 @@
+.advertisement {
+  &__image {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+  }
+
+  &__info {
+    padding: 10px 10px 5px;
+  }
+
+  &__title {
+    margin-bottom: 5px;
+
+    &_overfowed {
+      margin-bottom: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  &__price {
+    flex: 1;
+    text-align: end;
+  }
+
+  &__description {
+    height: 0;
+    overflow: hidden;
+
+    &_visible {
+      height: auto;
+    }
+  }
+}
+
+.image,
+.image__not {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  &__not {
+    padding: 40px;
+    object-fit: initial;
+  }
+}
