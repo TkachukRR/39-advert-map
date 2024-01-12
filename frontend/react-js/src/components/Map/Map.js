@@ -1,4 +1,4 @@
-import './Map.css';
+import './Map.scss';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { mapSettings } from '../../settings';
