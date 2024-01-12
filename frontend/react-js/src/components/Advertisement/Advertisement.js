@@ -7,6 +7,11 @@ export default function Advertisement({
   setSelectedAdvertisement,
 }) {
   const { id, images, title, price, description } = data;
+
+  const formattedPrice = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,
+    minimumIntegerDigits: 2,
+  }).format(price);
   const handleOnDetailsClick = (selected) => {
     setSelectedAdvertisement(selected);
   };
@@ -41,7 +46,9 @@ export default function Advertisement({
               Детальніше
             </Button>
           )}
-          <strong className={classes.advertisement__price}>{price}</strong>
+          <strong className={classes.advertisement__price}>
+            {formattedPrice} ₴
+          </strong>
         </div>
         <p
           className={
